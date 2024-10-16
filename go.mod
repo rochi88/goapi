@@ -3,7 +3,7 @@ module github.com/rochi88/goapi
 go 1.23.2
 
 require (
-	github.com/centrex/webcore v0.0.7
+	github.com/centrex/webcore v0.0.8
 	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/swaggo/swag v1.16.3
 	gorm.io/gorm v1.25.12
