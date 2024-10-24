@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - goapi-network
+    restart: always
+  goapi:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_ADDR=redis:6379
+    depends_on:
+      - redis
+    restart: always
+
+networks:
+  goapi-network:
+
+volumes:
+  pqdata:
+    driver: local
+  redis_data:

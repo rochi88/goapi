@@ -1,4 +1,4 @@
-package Resources
+package resources
 
 type ApiResponse struct {
 	Success    bool        `json:"success"`

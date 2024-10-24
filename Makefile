@@ -25,6 +25,9 @@ build: test
 run: swag build
 	$(BUILD_DIR)/$(APP_NAME)
 
+swag:
+	swag init --parseDependency --parseDepth 4 -g main.go --output docs/
+
 docker.run: docker.network docker.postgres swag docker.fiber docker.redis
 
 docker.network:
@@ -69,6 +72,3 @@ docker.stop.postgres:
 
 docker.stop.redis:
 	docker stop cgapp-redis
-
-swag:
-	swag init

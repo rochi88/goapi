@@ -1,14 +1,27 @@
 package models
 
 import (
+	"time"
+
+	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
 type User struct {
-	gorm.Model // Adds some metadata fields to the table
-	Name       string
-	Email      string `json:"username" gorm:"unique;" validate:"required,email,min=6,max=32"`
-	Password   string `json:"-" gorm:"type:text;" validate:"required,min=4"`
-	Phone      string
-	Status     bool
+	ID            uuid.UUID `gorm:"primaryKey;not null" json:"id"`
+	Name          string    `gorm:"type:text;not null" json:"name"`
+	Email         string    `gorm:"uniqueIndex;type:text;not null" json:"email"`
+	Password      string    `gorm:"not null" json:"-"`
+	Phone         string    `gorm:"null" json:"phone" validate:"required"`
+	Status        bool      `gorm:"default:false;not null" json:"status"`
+	Role          string    `gorm:"default:user;not null" json:"role"`
+	VerifiedEmail bool      `gorm:"default:false;not null" json:"verified_email"`
+	CreatedAt     time.Time `gorm:"autoCreateTime:milli" json:"-"`
+	UpdatedAt     time.Time `gorm:"autoCreateTime:milli;autoUpdateTime:milli" json:"-"`
+	Token         []Token   `gorm:"foreignKey:user_id;references:id" json:"-"`
+}
+
+func (user *User) BeforeCreate(_ *gorm.DB) error {
+	user.ID = uuid.New() // Generate UUID before create
+	return nil
 }

@@ -7,6 +7,7 @@ WORKDIR /build
 
 # Copy and download dependency using go mod.
 COPY go.mod go.sum ./
+RUN go mod tidy
 RUN go mod download
 
 # Copy the code into the container.
