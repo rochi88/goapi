@@ -10,7 +10,7 @@ require (
 	github.com/leekchan/accounting v1.0.0
 	github.com/swaggo/swag v1.16.4
 	gorm.io/driver/mysql v1.5.7
-	gorm.io/driver/postgres v1.5.10
+	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
 
