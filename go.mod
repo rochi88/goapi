@@ -4,7 +4,7 @@ go 1.23.2
 
 require (
 	github.com/go-co-op/gocron v1.37.0
-	github.com/gofiber/fiber/v2 v2.52.6
+	github.com/gofiber/fiber/v2 v2.52.11
 	github.com/google/uuid v1.6.0
 	github.com/joho/godotenv v1.5.1
 	github.com/leekchan/accounting v1.0.0
